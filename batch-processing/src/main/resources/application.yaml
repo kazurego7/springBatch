@@ -1,0 +1,13 @@
+spring:
+  batch:
+    jdbc:
+      initialize-schema: never
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/sakila_db
+    username: sakila
+    password: sakila
+
+constants:
+  actor-file-path: /var/spring_batch/actor_file
+  backup-path: /var/spring_batch/backup

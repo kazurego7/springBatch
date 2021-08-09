@@ -1,0 +1,24 @@
+version: "3.8"
+services:
+  db:
+    build:
+      context: ./
+    image: postgres
+    environment:
+      - POSTGRES_USER=sakila
+      - POSTGRES_PASSWORD=sakila
+      - POSTGRES_DB=sakila_db
+    ports: 
+      - 5432:5432
+    volumes: 
+      - db-data:/var/lib/postgresql/data
+      - ./init:/docker-entrypoint-initdb.d
+  java:
+    image: openjdk
+    command: bash
+    volumes:
+      - ./opt:/opt
+      - ./actor_file:/var/spring_batch/actor_file
+      - ./backup:/var/spring_batch/backup
+volumes: 
+  db-data:
